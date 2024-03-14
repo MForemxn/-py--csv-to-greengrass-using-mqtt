@@ -1,5 +1,11 @@
 import pandas as pd
 from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
+import logging
+import sys
+
+# Configure logging
+logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
+logger = logging.getLogger(__name__)
 
 # Parameters
 csv_file_path = 'path_to_your_csv_file.csv'
@@ -14,18 +20,35 @@ myMQTTClient.configureEndpoint(host, 8883)
 myMQTTClient.configureCredentials(root_ca_path, private_key_path, certificate_path)
 
 # Connect to AWS IoT
-myMQTTClient.connect()
+try:
+    myMQTTClient.connect()
+    logger.info("Connected to AWS IoT")
+except Exception as e:
+    logger.error(f"Failed to connect to AWS IoT: {e}")
+    sys.exit(1)
 
-# Read CSV file
-data = pd.read_csv(csv_file_path)
+# Read CSV file and publish data
+try:
+    data = pd.read_csv(csv_file_path)
+    # Convert DataFrame to JSON (adjust as necessary for your data structure)
+    json_string = data.to_json()
 
-# Convert DataFrame to JSON (adjust as necessary for your data structure)
-json_string = data.to_json()
-
-# Publish message to MQTT topic
-topic = "your/topic"
-myMQTTClient.publish(topic, json_string, 0)
+    # Publish message to MQTT topic
+    topic = "your/topic"
+    if myMQTTClient.publish(topic, json_string, 0):
+        logger.info(f"Message published to {topic}")
+    else:
+        logger.error(f"Failed to publish message to {topic}")
+except pd.errors.EmptyDataError:
+    logger.error("CSV file is empty or does not exist")
+except pd.errors.ParserError:
+    logger.error("Error parsing CSV file")
+except Exception as e:
+    logger.error(f"An error occurred: {e}")
 
 # Disconnect
-myMQTTClient.disconnect()
-
+try:
+    myMQTTClient.disconnect()
+    logger.info("Disconnected from AWS IoT")
+except Exception as e:
+    logger.error(f"Failed to disconnect properly: {e}")
