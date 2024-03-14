@@ -2,7 +2,6 @@ import pandas as pd
 from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
 import logging
 import sys
-# import idlelib
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
@@ -15,10 +14,14 @@ root_ca_path = 'path_to_root_ca.pem'
 certificate_path = 'path_to_certificate.pem.crt'
 private_key_path = 'path_to_private_key.pem.key'
 
+logger.debug("Starting script execution")
+
 # Initialize MQTT Client
 myMQTTClient = AWSIoTMQTTClient("clientId")
 myMQTTClient.configureEndpoint(host, 8883)
 myMQTTClient.configureCredentials(root_ca_path, private_key_path, certificate_path)
+
+logger.debug("MQTT client configured")
 
 # Connect to AWS IoT
 try:
@@ -28,11 +31,16 @@ except Exception as e:
     logger.error(f"Failed to connect to AWS IoT: {e}")
     sys.exit(1)
 
+logger.debug("Attempting to read and process CSV file")
+
 # Read CSV file and publish data
 try:
     data = pd.read_csv(csv_file_path)
+    logger.debug("CSV file read successfully")
+
     # Convert DataFrame to JSON (adjust as necessary for your data structure)
     json_string = data.to_json()
+    logger.debug("Data converted to JSON")
 
     # Publish message to MQTT topic
     topic = "your/topic"
@@ -53,3 +61,5 @@ try:
     logger.info("Disconnected from AWS IoT")
 except Exception as e:
     logger.error(f"Failed to disconnect properly: {e}")
+
+logger.debug("Script execution completed")
