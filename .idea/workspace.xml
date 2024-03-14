@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b62e6552-ae4a-42a4-bd82-f2e2a0dd555d" name="Changes" comment="initial commit" />
+    <list default="true" id="b62e6552-ae4a-42a4-bd82-f2e2a0dd555d" name="Changes" comment="initial commit">
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,7 +78,7 @@
       <option name="presentableId" value="Default" />
       <updated>1710385985098</updated>
       <workItem from="1710385987645" duration="366000" />
-      <workItem from="1710391211069" duration="390000" />
+      <workItem from="1710391211069" duration="551000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
