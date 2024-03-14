@@ -4,5 +4,6 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/aws-iot-device-sdk-python" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/pytelemgui" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/python-can" vcs="Git" />
   </component>
 </project>

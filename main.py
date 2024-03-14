@@ -1,65 +1,84 @@
-import pandas as pd
-from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
-import logging
-import sys
+import tkinter as tk
+from tkinter import scrolledtext
+from tkinter import messagebox
+import threading
 
-# Configure logging
-logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
-logger = logging.getLogger(__name__)
+def run_csv_to_mqtt():
+    """
+    Placeholder function for running the CSV to MQTT script.
+    Replace the content of this function with the actual logic or call to your script.
+    """
+    # Add actual logic here
+    print("Running CSV to MQTT script...")
+    # Simulate some work
+    import time
+    time.sleep(2)
+    print("CSV to MQTT script completed successfully.")
 
-# Parameters
-csv_file_path = 'path_to_your_csv_file.csv'
-host = "your-iot-endpoint.amazonaws.com"
-root_ca_path = 'path_to_root_ca.pem'
-certificate_path = 'path_to_certificate.pem.crt'
-private_key_path = 'path_to_private_key.pem.key'
+def run_can_to_mqtt():
+    """
+    Placeholder function for running the CAN to MQTT script.
+    Replace the content of this function with the actual logic or call to your script.
+    """
+    # Add actual logic here
+    print("Running CAN to MQTT script...")
+    # Simulate some work
+    import time
+    time.sleep(2)
+    print("CAN to MQTT script completed successfully.")
 
-logger.debug("Starting script execution")
+def execute_in_thread(target):
+    """
+    Executes a given target function in a new thread.
+    """
+    thread = threading.Thread(target=target)
+    thread.start()
 
-# Initialize MQTT Client
-myMQTTClient = AWSIoTMQTTClient("clientId")
-myMQTTClient.configureEndpoint(host, 8883)
-myMQTTClient.configureCredentials(root_ca_path, private_key_path, certificate_path)
+def run_script(script_func):
+    """
+    Runs the specified script function in a thread and catches any exceptions.
+    """
+    try:
+        execute_in_thread(script_func)
+    except Exception as e:
+        messagebox.showerror("Error", str(e))
 
-logger.debug("MQTT client configured")
+def setup_gui():
+    """
+    Sets up the GUI window and widgets.
+    """
+    window = tk.Tk()
+    window.title("MQTT Script Runner")
 
-# Connect to AWS IoT
-try:
-    myMQTTClient.connect()
-    logger.info("Connected to AWS IoT")
-except Exception as e:
-    logger.error(f"Failed to connect to AWS IoT: {e}")
-    sys.exit(1)
+    # Text widget for output
+    output_text = scrolledtext.ScrolledText(window, width=70, height=20)
+    output_text.grid(column=0, row=0, columnspan=2, padx=10, pady=10)
 
-logger.debug("Attempting to read and process CSV file")
+    # Redirect print statements to the text widget
+    def redirect_print_to_widget(text_widget):
+        class TextRedirector(object):
+            def __init__(self, widget):
+                self.widget = widget
 
-# Read CSV file and publish data
-try:
-    data = pd.read_csv(csv_file_path)
-    logger.debug("CSV file read successfully")
+            def write(self, str):
+                self.widget.insert(tk.END, str)
+                self.widget.see(tk.END)
 
-    # Convert DataFrame to JSON (adjust as necessary for your data structure)
-    json_string = data.to_json()
-    logger.debug("Data converted to JSON")
+            def flush(self):
+                pass
 
-    # Publish message to MQTT topic
-    topic = "your/topic"
-    if myMQTTClient.publish(topic, json_string, 0):
-        logger.info(f"Message published to {topic}")
-    else:
-        logger.error(f"Failed to publish message to {topic}")
-except pd.errors.EmptyDataError:
-    logger.error("CSV file is empty or does not exist")
-except pd.errors.ParserError:
-    logger.error("Error parsing CSV file")
-except Exception as e:
-    logger.error(f"An error occurred: {e}")
+        sys.stdout = TextRedirector(text_widget)
 
-# Disconnect
-try:
-    myMQTTClient.disconnect()
-    logger.info("Disconnected from AWS IoT")
-except Exception as e:
-    logger.error(f"Failed to disconnect properly: {e}")
+    redirect_print_to_widget(output_text)
 
-logger.debug("Script execution completed")
+    # Buttons to run scripts
+    csv_button = tk.Button(window, text="Run CSV to MQTT", command=lambda: run_script(run_csv_to_mqtt))
+    csv_button.grid(column=0, row=1, padx=10, pady=10)
+
+    can_button = tk.Button(window, text="Run CAN to MQTT", command=lambda: run_script(run_can_to_mqtt))
+    can_button.grid(column=1, row=1, padx=10, pady=10)
+
+    window.mainloop()
+
+if __name__ == "__main__":
+    setup_gui()
