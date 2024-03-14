@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b62e6552-ae4a-42a4-bd82-f2e2a0dd555d" name="Changes" comment="added some error catching" />
+    <list default="true" id="b62e6552-ae4a-42a4-bd82-f2e2a0dd555d" name="Changes" comment="added some debugging statements and made more robust" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,7 +78,7 @@
       <option name="presentableId" value="Default" />
       <updated>1710385985098</updated>
       <workItem from="1710385987645" duration="366000" />
-      <workItem from="1710391211069" duration="1687000" />
+      <workItem from="1710391211069" duration="2210000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -120,7 +120,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710393194522</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added some error catching">
+      <option name="closed" value="true" />
+      <created>1710393291708</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1710393291708</updated>
+    </task>
+    <task id="LOCAL-00007" summary="added some debugging statements and made more robust">
+      <option name="closed" value="true" />
+      <created>1710393803116</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1710393803116</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,6 +146,7 @@
     <MESSAGE value="initial commit" />
     <MESSAGE value="First Draft" />
     <MESSAGE value="added some error catching" />
-    <option name="LAST_COMMIT_MESSAGE" value="added some error catching" />
+    <MESSAGE value="added some debugging statements and made more robust" />
+    <option name="LAST_COMMIT_MESSAGE" value="added some debugging statements and made more robust" />
   </component>
 </project>
