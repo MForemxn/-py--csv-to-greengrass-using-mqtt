@@ -3,3 +3,4 @@ This is a very simple script to pull data from a CSV file, and publish it to a A
 
 # Dependencies
 Heavily relies on the AWSIoTPythonSDK.MQTTLib library for python. 
+https://github.com/aws/aws-iot-device-sdk-python
