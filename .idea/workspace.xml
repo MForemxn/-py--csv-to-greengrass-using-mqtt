@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b62e6552-ae4a-42a4-bd82-f2e2a0dd555d" name="Changes" comment="created a new file to read straight from a canbus using the python-can library">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="b62e6552-ae4a-42a4-bd82-f2e2a0dd555d" name="Changes" comment="did some refactoring to create a correct main.py and working on a GUI.">
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +86,7 @@
       <option name="presentableId" value="Default" />
       <updated>1710385985098</updated>
       <workItem from="1710385987645" duration="366000" />
-      <workItem from="1710391211069" duration="2779000" />
+      <workItem from="1710391211069" duration="3035000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -153,7 +152,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710394110579</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="did some refactoring to create a correct main.py and working on a GUI.">
+      <option name="closed" value="true" />
+      <created>1710394660172</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1710394660172</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,6 +177,7 @@
     <MESSAGE value="added some error catching" />
     <MESSAGE value="added some debugging statements and made more robust" />
     <MESSAGE value="created a new file to read straight from a canbus using the python-can library" />
-    <option name="LAST_COMMIT_MESSAGE" value="created a new file to read straight from a canbus using the python-can library" />
+    <MESSAGE value="did some refactoring to create a correct main.py and working on a GUI." />
+    <option name="LAST_COMMIT_MESSAGE" value="did some refactoring to create a correct main.py and working on a GUI." />
   </component>
 </project>

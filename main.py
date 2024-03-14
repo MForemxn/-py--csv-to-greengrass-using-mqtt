@@ -2,46 +2,35 @@ import tkinter as tk
 from tkinter import scrolledtext
 from tkinter import messagebox
 import threading
+import subprocess
+import sys
 
-def run_csv_to_mqtt():
+def run_script_external(file_name):
     """
-    Placeholder function for running the CSV to MQTT script.
-    Replace the content of this function with the actual logic or call to your script.
-    """
-    # Add actual logic here
-    print("Running CSV to MQTT script...")
-    # Simulate some work
-    import time
-    time.sleep(2)
-    print("CSV to MQTT script completed successfully.")
-
-def run_can_to_mqtt():
-    """
-    Placeholder function for running the CAN to MQTT script.
-    Replace the content of this function with the actual logic or call to your script.
-    """
-    # Add actual logic here
-    print("Running CAN to MQTT script...")
-    # Simulate some work
-    import time
-    time.sleep(2)
-    print("CAN to MQTT script completed successfully.")
-
-def execute_in_thread(target):
-    """
-    Executes a given target function in a new thread.
-    """
-    thread = threading.Thread(target=target)
-    thread.start()
-
-def run_script(script_func):
-    """
-    Runs the specified script function in a thread and catches any exceptions.
+    Runs an external Python script in a subprocess and captures its output.
     """
     try:
-        execute_in_thread(script_func)
+        # Run the script and capture output
+        process = subprocess.Popen(['python', file_name], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        # Continuous output
+        for line in process.stdout:
+            print(line, end="")
+        # Wait for the subprocess to finish
+        process.wait()
+        # Check if the process ended with an error
+        if process.returncode != 0:
+            # Read error output
+            error_msg = process.stderr.read()
+            print(f"Error running script {file_name}: {error_msg}")
     except Exception as e:
         messagebox.showerror("Error", str(e))
+
+def execute_in_thread(target, args):
+    """
+    Executes a given target function with arguments in a new thread.
+    """
+    thread = threading.Thread(target=target, args=args)
+    thread.start()
 
 def setup_gui():
     """
@@ -72,10 +61,10 @@ def setup_gui():
     redirect_print_to_widget(output_text)
 
     # Buttons to run scripts
-    csv_button = tk.Button(window, text="Run CSV to MQTT", command=lambda: run_script(run_csv_to_mqtt))
+    csv_button = tk.Button(window, text="Run CSV to MQTT", command=lambda: execute_in_thread(run_script_external, ("csv_to_aws.py",)))
     csv_button.grid(column=0, row=1, padx=10, pady=10)
 
-    can_button = tk.Button(window, text="Run CAN to MQTT", command=lambda: run_script(run_can_to_mqtt))
+    can_button = tk.Button(window, text="Run CAN to MQTT", command=lambda: execute_in_thread(run_script_external, ("canbus_to_aws.py",)))
     can_button.grid(column=1, row=1, padx=10, pady=10)
 
     window.mainloop()
