@@ -8,16 +8,16 @@ logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
 logger = logging.getLogger(__name__)
 
 # Parameters
-csv_file_path = 'path_to_your_csv_file.csv'
-host = "your-iot-endpoint.amazonaws.com"
-root_ca_path = 'path_to_root_ca.pem'
-certificate_path = 'path_to_certificate.pem.crt'
-private_key_path = 'path_to_private_key.pem.key'
+csv_file_path = '/Users/masonforeman/Library/Mobile Documents/com~apple~CloudDocs/University/Other/UTS Motorsports/telemetry/Test Data/electric_race_car_telemetry.csv'
+host = "avcujj6p3fbtu-ats.iot.ap-southeast-2.amazonaws.com"
+root_ca_path = '/Users/masonforeman/Library/Mobile Documents/com~apple~CloudDocs/University/Other/UTS Motorsports/telemetry/Python Perms/AmazonRootCA1.pem'
+certificate_path = '/Users/masonforeman/Library/Mobile Documents/com~apple~CloudDocs/University/Other/UTS Motorsports/telemetry/Python Perms/fb2ae5db5aade948dae670e9e23cc2dd0cf080327a252b4fc30290f83631bb02-certificate.pem.crt'
+private_key_path = '/Users/masonforeman/Library/Mobile Documents/com~apple~CloudDocs/University/Other/UTS Motorsports/telemetry/Python Perms/fb2ae5db5aade948dae670e9e23cc2dd0cf080327a252b4fc30290f83631bb02-private.pem.key'
 
 logger.debug("Starting script execution")
 
 # Initialize MQTT Client
-myMQTTClient = AWSIoTMQTTClient("clientId")
+myMQTTClient = AWSIoTMQTTClient("iotconsole-38b09eb7-0661-4394-ae79-5e0a41e1f492")
 myMQTTClient.configureEndpoint(host, 8883)
 myMQTTClient.configureCredentials(root_ca_path, private_key_path, certificate_path)
 
@@ -43,7 +43,7 @@ try:
     logger.debug("Data converted to JSON")
 
     # Publish message to MQTT topic
-    topic = "your/topic"
+    topic = "$aws/things/mason_test_instance_Py_CSV_to_AWS_GreenGrass_using_MQTT_2/shadow/update/documents"
     if myMQTTClient.publish(topic, json_string, 0):
         logger.info(f"Message published to {topic}")
     else:

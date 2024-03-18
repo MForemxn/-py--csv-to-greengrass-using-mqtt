@@ -4,6 +4,14 @@ from tkinter import messagebox
 import threading
 import subprocess
 import sys
+import os
+
+# Determine the directory of the main.py script
+script_dir = os.path.dirname(__file__)
+
+# Define the paths to the other scripts relative to the location of main.py
+csv_script_path = '/Users/masonforeman/Library/Mobile Documents/com~apple~CloudDocs/University/Other/UTS Motorsports/telemetry/csv to mqtt for aws/csv to aws.py'
+can_script_path = '/Users/masonforeman/Library/Mobile Documents/com~apple~CloudDocs/University/Other/UTS Motorsports/telemetry/csv to mqtt for aws/canbus to aws.py'
 
 def run_script_external(file_name):
     """
@@ -61,10 +69,10 @@ def setup_gui():
     redirect_print_to_widget(output_text)
 
     # Buttons to run scripts
-    csv_button = tk.Button(window, text="Run CSV to MQTT", command=lambda: execute_in_thread(run_script_external, ("csv_to_aws.py",)))
+    csv_button = tk.Button(window, text="Run CSV to MQTT", command=lambda: execute_in_thread(run_script_external, (csv_script_path,)))
     csv_button.grid(column=0, row=1, padx=10, pady=10)
 
-    can_button = tk.Button(window, text="Run CAN to MQTT", command=lambda: execute_in_thread(run_script_external, ("canbus_to_aws.py",)))
+    can_button = tk.Button(window, text="Run CAN to MQTT", command=lambda: execute_in_thread(run_script_external, (can_script_path,)))
     can_button.grid(column=1, row=1, padx=10, pady=10)
 
     window.mainloop()
