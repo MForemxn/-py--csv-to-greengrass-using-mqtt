@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b62e6552-ae4a-42a4-bd82-f2e2a0dd555d" name="Changes" comment="gui created on main.py">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+    <list default="true" id="b62e6552-ae4a-42a4-bd82-f2e2a0dd555d" name="Changes" comment="successful communication between csv and AWS greengrass server.">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/csv to aws.py" beforeDir="false" afterPath="$PROJECT_DIR$/csv to aws.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pytelemgui" beforeDir="false" afterPath="$PROJECT_DIR$/pytelemgui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pytelemgui/webgui-master/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/pytelemgui/webgui-master/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,23 +34,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Python.csv to aws.executor": "Run",
-    "Python.main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Python.csv to aws.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RunManager" selected="Python.csv to aws">
     <configuration name="csv to aws" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="csv to mqtt for aws" />
       <option name="ENV_FILES" value="" />
@@ -122,7 +120,9 @@
       <updated>1710385985098</updated>
       <workItem from="1710385987645" duration="366000" />
       <workItem from="1710391211069" duration="4025000" />
-      <workItem from="1710730309612" duration="4462000" />
+      <workItem from="1710730309612" duration="5238000" />
+      <workItem from="1710988811779" duration="4660000" />
+      <workItem from="1712181747228" duration="4977000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -204,7 +204,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710394695203</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="successful communication between csv and AWS greengrass server.">
+      <option name="closed" value="true" />
+      <created>1710735831668</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1710735831668</updated>
+    </task>
+    <task id="LOCAL-00012" summary="successful communication between csv and AWS greengrass server.">
+      <option name="closed" value="true" />
+      <created>1710735893360</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1710735893360</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,11 +239,12 @@
     <MESSAGE value="created a new file to read straight from a canbus using the python-can library" />
     <MESSAGE value="did some refactoring to create a correct main.py and working on a GUI." />
     <MESSAGE value="gui created on main.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="gui created on main.py" />
+    <MESSAGE value="successful communication between csv and AWS greengrass server." />
+    <option name="LAST_COMMIT_MESSAGE" value="successful communication between csv and AWS greengrass server." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/main_py$main.coverage" NAME="main Coverage Results" MODIFIED="1710396536632" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/csv_to_aws_py$main.coverage" NAME="main Coverage Results" MODIFIED="1710734768339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/csv_to_aws_py$csv_to_aws.coverage" NAME="csv to aws Coverage Results" MODIFIED="1710735688655" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/csv_to_aws_py$csv_to_aws.coverage" NAME="csv to aws Coverage Results" MODIFIED="1712186441757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

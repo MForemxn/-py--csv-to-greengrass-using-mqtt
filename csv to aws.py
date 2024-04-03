@@ -8,16 +8,46 @@ logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
 logger = logging.getLogger(__name__)
 
 # Parameters
-csv_file_path = '/Users/masonforeman/Library/Mobile Documents/com~apple~CloudDocs/University/Other/UTS Motorsports/telemetry/Test Data/electric_race_car_telemetry.csv'
+
+# Path to Data
+# csv_file_path = 'path/to/your/file.csv'
+
+# AWS IoT Core endpoint
+# host = "your-iot-endpoint.amazonaws.com"
+
+# Path to the root CA file
+# root_ca_path = '/path/to/your/downloads/AmazonRootCA1.pem'
+
+# Path to the device certificate file
+# certificate_path = '/path/to/your/downloads/python-device.cert.pem'
+
+# Path to the private key file
+# private_key_path = '/path/to/your/downloads/python-device.private.key'
+
+
+
+
+# Path to Data
+csv_file_path = '/Users/masonforeman/Downloads/Endurance111-12-22.csv'
+
+# AWS IoT Core endpoint
 host = "avcujj6p3fbtu-ats.iot.ap-southeast-2.amazonaws.com"
-root_ca_path = '/Users/masonforeman/Library/Mobile Documents/com~apple~CloudDocs/University/Other/UTS Motorsports/telemetry/Python Perms/AmazonRootCA1.pem'
-certificate_path = '/Users/masonforeman/Library/Mobile Documents/com~apple~CloudDocs/University/Other/UTS Motorsports/telemetry/Python Perms/fb2ae5db5aade948dae670e9e23cc2dd0cf080327a252b4fc30290f83631bb02-certificate.pem.crt'
-private_key_path = '/Users/masonforeman/Library/Mobile Documents/com~apple~CloudDocs/University/Other/UTS Motorsports/telemetry/Python Perms/fb2ae5db5aade948dae670e9e23cc2dd0cf080327a252b4fc30290f83631bb02-private.pem.key'
+
+# Path to the root CA file
+root_ca_path = '/Users/masonforeman/Downloads/AmazonRootCA1.pem'
+
+# Path to the device certificate file
+certificate_path = '/Users/masonforeman/Downloads/ConnectDevice/python-device.cert.pem'
+
+# Path to the private key file
+private_key_path = '/Users/masonforeman/Downloads/ConnectDevice/python-device.private.key'
+
+
 
 logger.debug("Starting script execution")
 
 # Initialize MQTT Client
-myMQTTClient = AWSIoTMQTTClient("iotconsole-38b09eb7-0661-4394-ae79-5e0a41e1f492")
+myMQTTClient = AWSIoTMQTTClient("")
 myMQTTClient.configureEndpoint(host, 8883)
 myMQTTClient.configureCredentials(root_ca_path, private_key_path, certificate_path)
 
